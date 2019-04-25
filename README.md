@@ -1,4 +1,4 @@
-# Game Card
+# Add-on project
 
 An empty project for creating an add-on
 
