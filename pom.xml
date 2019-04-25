@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.vaadin.artur</groupId>
-    <artifactId>game-card-flow</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>Game Card</name>
-    <description>Integration of game-card for Vaadin platform</description>
+    <artifactId>addon-flow</artifactId>
+    <version>1.0.0</version>
+    <name>Add-on for Vaadin</name>
+    <description>Add-on for Vaadin</description>
 
     <properties>
         <vaadin.version>13.0.4</vaadin.version>
@@ -44,46 +44,17 @@
             <id>Vaadin Directory</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
-        <!-- Repository needed for prerelease versions of Vaadin -->
-        <repository>
-            <id>Vaadin prereleases</id>
-            <url>http://maven.vaadin.com/vaadin-prereleases</url>
-        </repository>
-        <!-- Repository needed for the snapshot versions of Vaadin -->
-        <repository>
-            <id>vaadin-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-        </repository>
-        <!-- The bintray repository contain webjars immediately after generation. If the webjar is available
-             in Maven central, you do not need this repository -->
-        <repository>
-            <id>webjars</id>
-            <url>https://dl.bintray.com/webjars/maven</url>
-        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>flow-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
-        </dependency>
-        <!-- The following dependency is generated using webjars.org. If 
-             it does not resolve, go to https://www.webjars.org and deploy it as "Bower GitHub"
-             -->
-        <dependency>
-            <groupId>org.webjars.bowergithub.vpusher</groupId>
-            <artifactId>game-card</artifactId>
-            <version>1.0.6</version>
         </dependency>
     </dependencies>
 
@@ -110,20 +81,15 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.11.v20180605</version>
+                <version>9.4.14.v20181114</version>
                 <configuration>
                     <scanIntervalSeconds>-1</scanIntervalSeconds>
-                    <!-- Use test scope because the UI/demo classes are in 
+                    <!-- Use test scope because the UI/test classes are in 
                         the test package. -->
                     <useTestScope>true</useTestScope>
                     <supportedPackagings>
-                    <supportedPackaging>jar</supportedPackaging>
+	                <supportedPackaging>jar</supportedPackaging>
                     </supportedPackagings>
-                    <webAppConfig>
-                        <!-- This is only needed to be able to unzip webjars 
-                            directly into src/test/webjar-debug and modify them for testing -->
-                        <resourceBase>src/test/webjar-debug/META-INF/resources</resourceBase>
-                    </webAppConfig>
                 </configuration>
             </plugin>
         </plugins>

@@ -4,9 +4,9 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
 
 @Route("")
-public class DemoView extends Div {
+public class TestView extends Div {
 
-    public DemoView() {
+    public TestView() {
         add(new GameCard());
     }
 }
