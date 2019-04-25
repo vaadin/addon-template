@@ -7,6 +7,6 @@ import com.vaadin.flow.router.Route;
 public class TestView extends Div {
 
     public TestView() {
-        add(new GameCard());
+        add(new TheAddon());
     }
 }
