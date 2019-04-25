@@ -7,7 +7,7 @@
     <artifactId>addon-flow</artifactId>
     <version>1.0.0</version>
     <name>Add-on for Vaadin</name>
-    <description>Add-on for Vaadin</description>
+    <description>###Project Name###</description>
 
     <properties>
         <vaadin.version>13.0.4</vaadin.version>
