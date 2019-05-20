@@ -53,7 +53,8 @@
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-core</artifactId>
+            <!-- Replace artifactId with vaadin-core to use only free components -->
+            <artifactId>vaadin</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
