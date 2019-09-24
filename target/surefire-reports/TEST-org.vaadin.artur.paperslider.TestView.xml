@@ -30,7 +30,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="3.16.0-6-amd64"/>
+    <property name="os.version" value="4.14.123-111.109.amzn2.x86_64"/>
     <property name="user.home" value="/root"/>
     <property name="user.timezone" value="Etc/UTC"/>
     <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
