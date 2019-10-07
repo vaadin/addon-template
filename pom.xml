@@ -10,7 +10,7 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>15.0-SNAPSHOT</vaadin.version>
+        <vaadin.version>14.0.8</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
