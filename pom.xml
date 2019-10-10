@@ -10,7 +10,7 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>15.0-SNAPSHOT</vaadin.version>
+        <vaadin.version>15.0.0.alpha2</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -66,14 +66,6 @@
                 <enabled>false</enabled>
             </releases>
         </repository>
-        <!-- Repository used by many Vaadin add-ons -->
-        <repository>
-            <id>Vaadin Directory</id>
-            <url>https://maven.vaadin.com/vaadin-addons</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -93,15 +85,6 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>vaadin-snapshots</id>
-            <url>
-                https://oss.sonatype.org/content/repositories/vaadin-snapshots/
-            </url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
         </pluginRepository>
     </pluginRepositories>
 
