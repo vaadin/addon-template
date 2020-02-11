@@ -8,7 +8,7 @@ import org.junit.Test;
 public class TestViewIT extends AbstractViewTest {
 
     @Test
-    public void clickingButtonShowsNotification() {
+    public void addonTextIsRendered() {
         DivElement divElement = $(DivElement.class).id("theAddon");
         Assert.assertNotNull(divElement);
         Assert.assertEquals("Hello", divElement.getText());
