@@ -1,4 +1,4 @@
-package org.vaadin.example.paperslider;
+package org.vaadin.example.addon;
 
 import com.vaadin.flow.component.html.Div;
 
