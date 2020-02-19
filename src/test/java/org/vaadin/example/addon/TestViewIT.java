@@ -1,4 +1,4 @@
-package org.vaadin.artur.paperslider;
+package org.vaadin.example.addon;
 
 import com.vaadin.flow.component.html.testbench.DivElement;
 import org.junit.Assert;

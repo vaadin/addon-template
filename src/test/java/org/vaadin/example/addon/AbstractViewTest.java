@@ -1,4 +1,4 @@
-package org.vaadin.artur.paperslider;
+package org.vaadin.example.addon;
 
 import org.junit.Assert;
 import org.junit.Before;
