@@ -14,4 +14,5 @@ This deploys demo at http://localhost:8080
 ### Branching information
 
 * `master` the latest version of the starter, using latest platform snapshot
+* `v14` the version for Vaadin 14, which is the newest LTS  
 * `v13` the version for Vaadin 13
