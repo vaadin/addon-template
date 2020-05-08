@@ -6,7 +6,7 @@ An empty project for creating an add-on
 
 Starting the test/demo server:
 ```
-mvn jetty:run
+mvn jetty:run -Pintegration-tests
 ```
 
 This deploys demo at http://localhost:8080
