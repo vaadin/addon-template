@@ -9,7 +9,7 @@ public class TestViewIT extends AbstractViewTest {
 
     @Test
     public void addonTextIsRendered() {
-        DivElement divElement = $(DivElement.class).id("theAddon");
+        DivElement divElement = $(DivElement.class).first();
         Assert.assertNotNull(divElement);
         Assert.assertEquals("Hello", divElement.getText());
     }
