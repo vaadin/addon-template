@@ -13,6 +13,10 @@ mvn jetty:run
 
 This deploys demo at http://localhost:8080
 
+### Integration test
+
+To run Integration Tests, execute `mvn verify -Pit`.
+
 ### Branching information
 
 * `master` the latest version of the starter, using latest platform snapshot
