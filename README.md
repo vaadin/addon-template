@@ -15,7 +15,7 @@ This deploys demo at http://localhost:8080
 
 ### Integration test
 
-To run Integration Tests, execute `mvn verify -Pit`.
+To run Integration Tests, execute `mvn verify -Pit,production`.
 
 ### Branching information
 
