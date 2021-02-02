@@ -6,7 +6,6 @@
  */
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const { DefinePlugin } = require('webpack');
@@ -27,6 +26,7 @@ const themePartRegex = /(\\|\/)themes\1[\s\S]*?\1/;
 //  - flow templates for classic Flow
 //  - client code with index.html and index.[ts/js] for CCDM
 const frontendFolder = path.resolve(__dirname, 'frontend');
+const frontendGeneratedFolder = path.resolve(__dirname, 'frontend/generated');
 const fileNameOfTheFlowGeneratedMainEntryPoint = path.resolve(__dirname, 'target/frontend/generated-flow-imports.js');
 const mavenOutputFolderForFlowBundledFiles = path.resolve(__dirname, 'target/classes/META-INF/VAADIN/webapp');
 const mavenOutputFolderForResourceFiles = path.resolve(__dirname, 'target/classes/META-INF/VAADIN');
@@ -169,12 +169,12 @@ const flowFrontendThemesFolder = path.resolve(flowFrontendFolder, 'themes');
 const themeName = extractThemeName(flowFrontendThemesFolder);
 const themeOptions = {
   devMode: devMode,
-  // The following matches target/flow-frontend/themes/theme-generated.js
-  // and for theme in JAR that is copied to target/flow-frontend/themes/
-  // and not frontend/themes
+  // The following matches folder 'target/flow-frontend/themes/'
+  // (not 'frontend/themes') for theme in JAR that is copied there
   themeResourceFolder: flowFrontendThemesFolder,
   themeProjectFolders: themeProjectFolders,
   projectStaticAssetsOutputFolder: projectStaticAssetsOutputFolder,
+  frontendGeneratedFolder: frontendGeneratedFolder
 };
 const processThemeResourcesCallback = (logger) => processThemeResources(themeOptions, logger);
 
@@ -201,7 +201,10 @@ module.exports = {
       flowFrontendFolder,
       ...projectStaticAssetsFolders,
     ],
-    extensions: ['.ts', '.js'],
+    extensions: [
+      useClientSideIndexFileForBootstrapping && '.ts',
+      '.js'
+    ].filter(Boolean),
     alias: {
       Frontend: frontendFolder
     }
@@ -230,11 +233,9 @@ module.exports = {
 
   module: {
     rules: [
-      {
+      useClientSideIndexFileForBootstrapping && {
         test: /\.ts$/,
-        use: [
-          'awesome-typescript-loader'
-        ]
+        loader: 'ts-loader'
       },
       {
         test: /\.css$/i,
@@ -287,7 +288,7 @@ module.exports = {
           }
         }],
       },
-    ]
+    ].filter(Boolean)
   },
   performance: {
     maxEntrypointSize: 2097152, // 2MB
@@ -321,10 +322,8 @@ module.exports = {
       template: clientSideIndexHTML,
       filename: indexHtmlPath,
       inject: 'head',
+      scriptLoading: 'defer',
       chunks: ['bundle', ...(devMode ? ['devmodeGizmo'] : [])]
-    }),
-    useClientSideIndexFileForBootstrapping && new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer'
     }),
 
     // Service worker for offline
