@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const { DefinePlugin } = require('webpack');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin');
 
 // Flow plugins
@@ -123,6 +123,7 @@ if (useClientSideIndexFileForBootstrapping) {
 }
 
 const appShellUrl = '.';
+let appShellManifestEntry = undefined;
 
 const swManifestTransform = (manifestEntries) => {
   const warnings = [];
@@ -137,6 +138,10 @@ const swManifestTransform = (manifestEntries) => {
   const indexEntryIdx = manifest.findIndex(entry => entry.url === 'index.html');
   if (indexEntryIdx !== -1) {
     manifest[indexEntryIdx].url = appShellUrl;
+    appShellManifestEntry = manifest[indexEntryIdx];
+  } else {
+    // Index entry is only emitted on first compilation. Make sure it is cached also for incremental builds
+    manifest.push(appShellManifestEntry);
   }
 
   return { manifest, warnings };
@@ -296,7 +301,7 @@ module.exports = {
   },
   plugins: [
     // Generate manifest.json file
-    new ManifestPlugin(),
+    new WebpackManifestPlugin(),
 
     new ApplicationThemePlugin(themeOptions),
 
