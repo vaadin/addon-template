@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { InjectManifest } = require('workbox-webpack-plugin');
 const { DefinePlugin } = require('webpack');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin');
 
 // Flow plugins
@@ -123,6 +123,7 @@ if (useClientSideIndexFileForBootstrapping) {
 }
 
 const appShellUrl = '.';
+let appShellManifestEntry = undefined;
 
 const swManifestTransform = (manifestEntries) => {
   const warnings = [];
@@ -137,6 +138,10 @@ const swManifestTransform = (manifestEntries) => {
   const indexEntryIdx = manifest.findIndex(entry => entry.url === 'index.html');
   if (indexEntryIdx !== -1) {
     manifest[indexEntryIdx].url = appShellUrl;
+    appShellManifestEntry = manifest[indexEntryIdx];
+  } else {
+    // Index entry is only emitted on first compilation. Make sure it is cached also for incremental builds
+    manifest.push(appShellManifestEntry);
   }
 
   return { manifest, warnings };
@@ -183,6 +188,30 @@ exports = {
   buildFolder: `${buildFolder}`,
   confFolder: `${confFolder}`
 };
+
+const baseCssLoaders = [
+  {
+    loader: 'css-loader',
+    options: {
+      url: (url, resourcePath) => {
+        // Only translate files from node_modules
+        const resolve = resourcePath.match(/(\\|\/)node_modules\1/);
+        const themeResource = resourcePath.match(themePartRegex) && url.match(/^themes\/[\s\S]*?\//);
+        return resolve || themeResource;
+      },
+      // use theme-loader to also handle any imports in css files
+      importLoaders: 1
+    },
+  },
+  {
+    // theme-loader will change any url starting with './' to start with 'VAADIN/static' instead
+    // NOTE! this loader should be here so it's run before css-loader as loaders are applied Right-To-Left
+    loader: '@vaadin/theme-loader',
+    options: {
+      devMode: devMode
+    }
+  }
+];
 
 module.exports = {
   mode: 'production',
@@ -239,34 +268,24 @@ module.exports = {
       },
       {
         test: /\.css$/i,
+        exclude: /\.global\.css$/i,
         use: [
           {
-            loader: "lit-css-loader"
+            loader: 'lit-css-loader'
           },
           {
-            loader: "extract-loader"
+            loader: 'extract-loader'
           },
+          ...baseCssLoaders
+        ],
+      },
+      {
+        test: /\.global\.css$/i,
+        use: [
           {
-            loader: 'css-loader',
-            options: {
-              url: (url, resourcePath) => {
-                // Only translate files from node_modules
-                const resolve = resourcePath.match(/(\\|\/)node_modules\1/);
-                const themeResource = resourcePath.match(themePartRegex) && url.match(/^themes\/[\s\S]*?\//);
-                return resolve || themeResource;
-              },
-              // use theme-loader to also handle any imports in css files
-              importLoaders: 1
-            },
+            loader: 'style-loader'
           },
-          {
-            // theme-loader will change any url starting with './' to start with 'VAADIN/static' instead
-            // NOTE! this loader should be here so it's run before css-loader as loaders are applied Right-To-Left
-            loader: '@vaadin/theme-loader',
-            options: {
-              devMode: devMode
-            }
-          }
+          ...baseCssLoaders
         ],
       },
       {
@@ -296,7 +315,7 @@ module.exports = {
   },
   plugins: [
     // Generate manifest.json file
-    new ManifestPlugin(),
+    new WebpackManifestPlugin(),
 
     new ApplicationThemePlugin(themeOptions),
 
