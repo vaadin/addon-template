@@ -1,4 +1,6 @@
-package org.vaadin.artur.paperslider;
+package org.vaadin.addons.mycompany.theaddon;
+
+import org.vaadin.addons.mycompany.theaddon.TheAddon;
 
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;

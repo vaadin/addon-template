@@ -1,4 +1,4 @@
-package org.vaadin.artur.paperslider;
+package org.vaadin.addons.mycompany.theaddon;
 
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JavaScript;
