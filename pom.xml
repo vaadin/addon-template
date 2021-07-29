@@ -145,7 +145,7 @@
                         the test package. -->
                     <useTestScope>true</useTestScope>
                     <supportedPackagings>
-	                <supportedPackaging>jar</supportedPackaging>
+                        <supportedPackaging>jar</supportedPackaging>
                     </supportedPackagings>
                 </configuration>
             </plugin>
