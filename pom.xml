@@ -10,7 +10,7 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>14.4.6</vaadin.version>
+        <vaadin.version>14.6.7</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -101,7 +101,7 @@
     </dependencies>
 
     <build>
-	<defaultGoal>jetty:run</defaultGoal>
+        <defaultGoal>jetty:run</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -131,7 +131,7 @@
                         the test package. -->
                     <useTestScope>true</useTestScope>
                     <supportedPackagings>
-	                <supportedPackaging>jar</supportedPackaging>
+                        <supportedPackaging>jar</supportedPackaging>
                     </supportedPackagings>
                 </configuration>
             </plugin>
