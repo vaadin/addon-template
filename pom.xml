@@ -92,8 +92,8 @@
     <dependencies>
         <dependency>
             <groupId>com.vaadin</groupId>
-            <!-- Replace artifactId with vaadin-core to use only free components -->
-            <artifactId>vaadin</artifactId>
+            <!-- Consider limiting the dependencies to flow-server only something, but for most end users depending on vaadin-core is ok -->
+            <artifactId>vaadin-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
