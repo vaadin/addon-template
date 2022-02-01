@@ -4,9 +4,9 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
 
 @Route("")
-public class TestView extends Div {
+public class AddonView extends Div {
 
-    public TestView() {
+    public AddonView() {
         TheAddon theAddon = new TheAddon();
         theAddon.setId("theAddon");
         add(theAddon);

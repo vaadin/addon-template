@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class TestViewIT extends AbstractViewTest {
+public class AddonIT extends AbstractViewTest {
 
     @Test
     public void addonTextIsRendered() {
