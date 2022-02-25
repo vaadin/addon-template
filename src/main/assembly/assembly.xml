@@ -34,7 +34,7 @@
         <!-- This is vaadin.com/directory related manifest needed in the 
             zip package -->
         <file>
-            <source>assembly/MANIFEST.MF</source>
+            <source>src/main/assembly/MANIFEST.MF</source>
             <outputDirectory>META-INF</outputDirectory>
             <filtered>true</filtered>
         </file>
