@@ -19,11 +19,6 @@ mvn jetty:run
 ```
 
 This deploys demo at http://localhost:8080
-
-### Branching information
-
-* `master` the latest version of the starter, using latest stable platform version
-* `v14` the version for Vaadin 14, which is the newest LTS  
  
 ### Integration test
 
