@@ -1,4 +1,4 @@
-package org.vaadin.example.addon;
+package org.vaadin.addons.mygroup;
 
 import com.vaadin.flow.component.html.Div;
 

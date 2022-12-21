@@ -1,4 +1,4 @@
-package org.vaadin.example.addon;
+package org.vaadin.addons.mygroup;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
