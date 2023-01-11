@@ -2,6 +2,9 @@
 
 An empty project for creating a Vaadin add-on. You should start from this project if your add-on's components are based on the existing Vaadin classes or doesn't use 3rd party JavaScript modules.
 
+## Add-on architecture
+![vaadin-server-addon](https://user-images.githubusercontent.com/991105/211799418-07291e75-46db-4177-8cfe-ac3e6b1e5e44.png)
+
 ## Alternative add-on templates
 
 If you wish to build and publish an add-on or extension in [Vaadin Directory](https://vaadin.com/directory), Vaadin provides the following three template projects:
