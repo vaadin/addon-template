@@ -11,13 +11,16 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>23.3.6</vaadin.version>
+        <vaadin.version>24.0.3</vaadin.version>
 
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8
         </project.reporting.outputEncoding>
+
+        <!-- Vaadin dependencies should have provided scope, to prevent the add-on mistakenly overwriting project versions -->
+        <scopeForVaadinProvidedDependency>provided</scopeForVaadinProvidedDependency>
     </properties>
     <organization>
         <name>###author###</name>
@@ -94,6 +97,12 @@
             <groupId>com.vaadin</groupId>
             <!-- Consider limiting the dependencies to flow-server only something, but for most end users depending on vaadin-core is ok -->
             <artifactId>vaadin-core</artifactId>
+            <!--
+                Use 'provided' scope for Vaadin dependencies, but switch to 'compile' during development
+                by activating the `development` profile, to allow jetty to pick up all required dependencies for the
+                web application
+            -->
+            <scope>${scopeForVaadinProvidedDependency}</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -103,12 +112,6 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-testbench</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -142,9 +145,9 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.28.v20200408</version>
+                <version>11.0.14</version>
                 <configuration>
-                    <scanIntervalSeconds>-1</scanIntervalSeconds>
+                    <scan>-1</scan>
                     <!-- Use test scope because the UI/test classes are in
                         the test package. -->
                     <useTestScope>true</useTestScope>
@@ -175,6 +178,16 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>development</id>
+            <properties>
+                <!--
+                    In development mode use compile scope instead of provided scope, so jetty can add all required
+                    dependencies to run the web application
+                -->
+                <scopeForVaadinProvidedDependency>compile</scopeForVaadinProvidedDependency>
+            </properties>
+        </profile>
         <profile>
             <!-- Production mode is activated using -Pproduction -->
             <id>production</id>
@@ -268,9 +281,8 @@
                         <configuration>
                             <!-- Generated file that shouldn't be included in add-ons -->
                             <excludes>
-                                <exclude>
-                                    META-INF/VAADIN/config/flow-build-info.json
-                                </exclude>
+                                <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                                <exclude>META-INF/VAADIN/webapp/**/*</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
@@ -279,13 +291,16 @@
         </profile>
         <profile>
             <id>it</id>
+            <properties>
+                <scopeForVaadinProvidedDependency>compile</scopeForVaadinProvidedDependency>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-maven-plugin</artifactId>
                         <configuration>
-                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <scan>0</scan>
                             <stopPort>8081</stopPort>
                             <useTestScope>true</useTestScope>
                             <supportedPackagings>

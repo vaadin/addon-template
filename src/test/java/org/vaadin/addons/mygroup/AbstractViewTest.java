@@ -1,9 +1,7 @@
 package org.vaadin.addons.mygroup;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -46,12 +44,6 @@ public abstract class AbstractViewTest extends ParallelTest {
         this.route = route;
         this.rootSelector = rootSelector;
     }
-
-    @BeforeClass
-    public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
-
 
     @Before
     public void setup() throws Exception {
