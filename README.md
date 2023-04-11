@@ -26,7 +26,7 @@ If you are using static resources such as images, JS (e.g. templates) and CSS fi
 
 Starting the test/demo server:
 ```
-mvn jetty:run
+mvn jetty:run -Pdevelopment
 ```
 
 This deploys demo at http://localhost:8080
@@ -37,7 +37,7 @@ To run Integration Tests, execute `mvn verify -Pit,production`.
 
 ## Publishing to Vaadin Directory
 
-You should change the `organisation.name` property in `pom.xml` to your own name/organization.
+You should change the `organization.name` property in `pom.xml` to your own name/organization.
 
 ```
     <organization>
@@ -49,7 +49,7 @@ You can create the zip package needed for [Vaadin Directory](https://vaadin.com/
 
 ```
 mvn versions:set -DnewVersion=1.0.0 # You cannot publish snapshot versions 
-mvn install -Pdirectory
+mvn clean package -Pdirectory
 ```
 
 The package is created as `target/{project-name}-1.0.0.zip`
