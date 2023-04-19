@@ -1,11 +1,14 @@
 package org.vaadin.addons.mygroup;
 
+import java.lang.management.ManagementFactory;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import com.vaadin.flow.theme.AbstractTheme;
 import com.vaadin.testbench.ScreenshotOnFailureRule;
@@ -50,9 +53,24 @@ public abstract class AbstractViewTest extends ParallelTest {
         if (isUsingHub()) {
             super.setup();
         } else {
-            setDriver(TestBench.createDriver(new ChromeDriver()));
+            setDriver(TestBench.createDriver(new ChromeDriver(chromeOptions())));
         }
         getDriver().get(getURL(route));
+    }
+
+
+    protected ChromeOptions chromeOptions() {
+        ChromeOptions options = new ChromeOptions();
+        boolean headless = Boolean.parseBoolean(System.getProperty("test.headless", "true"));
+        if (headless && !isJavaInDebugMode()) {
+            options.addArguments("--headless=new", "--disable-gpu");
+        }
+        return options;
+    }
+
+    static boolean isJavaInDebugMode() {
+        return ManagementFactory.getRuntimeMXBean().getInputArguments()
+                .toString().contains("jdwp");
     }
 
     /**
@@ -70,8 +88,8 @@ public abstract class AbstractViewTest extends ParallelTest {
      * identified by {@code themeClass}. If the the is not found, JUnit
      * assert will fail the test case.
      *
-     * @param element       web element to check for the theme
-     * @param themeClass    theme class (such as {@code Lumo.class}
+     * @param element    web element to check for the theme
+     * @param themeClass theme class (such as {@code Lumo.class}
      */
     protected void assertThemePresentOnElement(
             WebElement element, Class<? extends AbstractTheme> themeClass) {

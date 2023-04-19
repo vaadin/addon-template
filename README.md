@@ -35,6 +35,11 @@ This deploys demo at http://localhost:8080
 
 To run Integration Tests, execute `mvn verify -Pit,production`.
 
+Tests run by default in `headless` mode, to avoid browser windows to be opened for every test.
+This behaviour is always disabled when running the tests in debug mode in the IDE
+or when running maven with the `-Dmaven.failsafe.debug` sytem property.
+On normal execution, headless mode can be deactivated using the `-Dtest.headless=false` system property.
+
 ## Publishing to Vaadin Directory
 
 You should change the `organization.name` property in `pom.xml` to your own name/organization.
