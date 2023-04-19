@@ -16,11 +16,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8
-        </project.reporting.outputEncoding>
-
-        <!-- Vaadin dependencies should have provided scope, to prevent the add-on mistakenly overwriting project versions -->
-        <scopeForVaadinProvidedDependency>provided</scopeForVaadinProvidedDependency>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <organization>
         <name>###author###</name>
@@ -97,12 +93,6 @@
             <groupId>com.vaadin</groupId>
             <!-- Consider limiting the dependencies to flow-server only something, but for most end users depending on vaadin-core is ok -->
             <artifactId>vaadin-core</artifactId>
-            <!--
-                Use 'provided' scope for Vaadin dependencies, but switch to 'compile' during development
-                by activating the `development` profile, to allow jetty to pick up all required dependencies for the
-                web application
-            -->
-            <scope>${scopeForVaadinProvidedDependency}</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -178,16 +168,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>development</id>
-            <properties>
-                <!--
-                    In development mode use compile scope instead of provided scope, so jetty can add all required
-                    dependencies to run the web application
-                -->
-                <scopeForVaadinProvidedDependency>compile</scopeForVaadinProvidedDependency>
-            </properties>
-        </profile>
         <profile>
             <!-- Production mode is activated using -Pproduction -->
             <id>production</id>
@@ -291,9 +271,6 @@
         </profile>
         <profile>
             <id>it</id>
-            <properties>
-                <scopeForVaadinProvidedDependency>compile</scopeForVaadinProvidedDependency>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
