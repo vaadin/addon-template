@@ -97,7 +97,7 @@ public abstract class AbstractViewTest extends ParallelTest {
      * assert will fail the test case.
      *
      * @param element    web element to check for the theme
-     * @param themeClass theme class (such as {@code Lumo.class}
+     * @param themeClass theme class (such as {@code Lumo.class})
      */
     protected void assertThemePresentOnElement(
             WebElement element, Class<? extends AbstractTheme> themeClass) {
