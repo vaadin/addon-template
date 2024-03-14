@@ -11,7 +11,7 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>24.3.7</vaadin.version>
+        <vaadin.version>24.4.0.alpha14</vaadin.version>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -120,7 +120,7 @@
                     <excludes>
                         <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
                     </excludes>
-                </configuration>                     
+                </configuration>
             </plugin>
 
             <plugin>
