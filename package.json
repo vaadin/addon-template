@@ -23,7 +23,7 @@
     "@vaadin/vaadin-combo-box": "5.5.3",
     "@vaadin/vaadin-context-menu": "4.6.1",
     "@vaadin/vaadin-control-state-mixin": "2.2.6",
-    "@vaadin/vaadin-core-shrinkwrap": "14.11.11",
+    "@vaadin/vaadin-core-shrinkwrap": "14.11.12",
     "@vaadin/vaadin-custom-field": "1.4.0",
     "@vaadin/vaadin-date-picker": "4.6.0",
     "@vaadin/vaadin-date-time-picker": "2.1.0",
@@ -53,7 +53,7 @@
     "@vaadin/vaadin-text-field": "2.10.0",
     "@vaadin/vaadin-themable-mixin": "1.6.2",
     "@vaadin/vaadin-time-picker": "3.1.0",
-    "@vaadin/vaadin-upload": "4.4.3",
+    "@vaadin/vaadin-upload": "4.4.4",
     "@vaadin/vaadin-usage-statistics": "2.1.2",
     "@webcomponents/shadycss": "1.8.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
@@ -106,7 +106,7 @@
       "@vaadin/vaadin-combo-box": "5.5.3",
       "@vaadin/vaadin-context-menu": "4.6.1",
       "@vaadin/vaadin-control-state-mixin": "2.2.6",
-      "@vaadin/vaadin-core-shrinkwrap": "14.11.11",
+      "@vaadin/vaadin-core-shrinkwrap": "14.11.12",
       "@vaadin/vaadin-custom-field": "1.4.0",
       "@vaadin/vaadin-date-picker": "4.6.0",
       "@vaadin/vaadin-date-time-picker": "2.1.0",
@@ -136,7 +136,7 @@
       "@vaadin/vaadin-text-field": "2.10.0",
       "@vaadin/vaadin-themable-mixin": "1.6.2",
       "@vaadin/vaadin-time-picker": "3.1.0",
-      "@vaadin/vaadin-upload": "4.4.3",
+      "@vaadin/vaadin-upload": "4.4.4",
       "@vaadin/vaadin-usage-statistics": "2.1.2",
       "@webcomponents/shadycss": "1.8.0",
       "@webcomponents/webcomponentsjs": "^2.2.10",
@@ -166,6 +166,6 @@
       "webpack-dev-server": "3.11.0",
       "webpack-merge": "4.2.2"
     },
-    "hash": "9770208ee8fbdfce6339a4e2e093ecba8e877289a31a763b3910f80573742f2d"
+    "hash": "71c378c71ec09b993ea46b5d5a04297865124d485132aa229b565d1e4adeb9b8"
   }
 }
