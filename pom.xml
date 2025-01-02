@@ -11,7 +11,7 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>24.4.11</vaadin.version>
+        <vaadin.version>24.6.0</vaadin.version>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -124,9 +124,9 @@
             </plugin>
 
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>11.0.14</version>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-maven-plugin</artifactId>
+                <version>12.0.15</version>
                 <configuration>
                     <scan>-1</scan>
                     <!-- Use test scope because the UI/test classes are in
@@ -265,8 +265,8 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-maven-plugin</artifactId>
+                        <groupId>org.eclipse.jetty.ee10</groupId>
+                        <artifactId>jetty-ee10-maven-plugin</artifactId>
                         <configuration>
                             <scan>0</scan>
                             <stopPort>8081</stopPort>
