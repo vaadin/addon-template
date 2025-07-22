@@ -11,7 +11,7 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>24.8.3</vaadin.version>
+        <vaadin.version>24.8.4</vaadin.version>
 
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
