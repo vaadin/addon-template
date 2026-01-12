@@ -11,7 +11,7 @@
     <description>###Project Name###</description>
 
     <properties>
-        <vaadin.version>25.0.2</vaadin.version>
+        <vaadin.version>25.0.3</vaadin.version>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
