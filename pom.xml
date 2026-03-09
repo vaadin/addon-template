@@ -50,6 +50,13 @@
             <groupId>com.vaadin</groupId>
             <!-- Consider limiting the dependencies to flow-server only something, but for most end users depending on vaadin-core is ok -->
             <artifactId>vaadin-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
