@@ -20,7 +20,7 @@ If you wish to build and publish an add-on or extension in [Vaadin Directory](ht
 * TestView.java: A View class that let's you test the component you are building. This and other classes in the test folder will not be packaged during the build. You can add more test view classes in this package.
 * assembly/: this folder includes configuration for packaging the project into a JAR so that it works well with other Vaadin projects and the Vaadin Directory. There is usually no need to modify these files, unless you need to add JAR manifest entries.
 
-If you are using static resources such as images, JS (e.g. templates) and CSS files the correct location for them is under the `/src/main/resources/META-INF/resources/frontend` directory and is described here [Resource Cheat Sheet](https://vaadin.com/docs/v14/flow/importing-dependencies/tutorial-ways-of-importing.html#resource-cheat-sheet)in more details. 
+Stylesheets loaded with `@StyleSheet` and static resources such as images go under the `/src/main/resources/META-INF/resources` directory. JS modules (e.g. templates), and CSS files that should be included in the frontend bundle and loaded with `@CssImport`, go under the `/src/main/resources/META-INF/frontend` directory. See the [Resource Cheat Sheet](https://vaadin.com/docs/latest/flow/advanced/loading-resources#resource-cheat-sheet) for more details.
 
 ### Deployment
 
