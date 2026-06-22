@@ -1,0 +1,13 @@
+Place the add-on's frontend bundle sources in this directory. They are
+packaged into the JAR and used as input when the consuming application
+builds its frontend bundle. This is the place for JS modules referenced
+with @JsModule, and for CSS files that should be included in the bundle
+and loaded with @CssImport.
+
+Use the ./ prefix when referencing the files, e.g.
+@JsModule("./my-addon/my-module.js") for
+src/main/resources/META-INF/frontend/my-addon/my-module.js
+
+CSS is typically not bundled: place stylesheets in
+src/main/resources/META-INF/resources and load them with @StyleSheet.
+Static resources, such as images, also go there.
